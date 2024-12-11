@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abstract Paintings</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px;
+            text-align: center;
+            display: inline-block;
+            width: 250px;
+        }
+
+        .card img {
+            width: 100%;
+            height: 150px;
+            border-radius: 5px;
+        }
+
+        .card h2 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .card button {
+            background-color: #5e5df0;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .card button:hover {
+            background-color: #4848c2;
+        }
+
+        .cart {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#">Home</a>
+        <a href="#">Paintings</a>
+        <a href="#">About</a>
+        <a href="#">Cart</a>
+    </nav>
+
+    <div class="container">
+        <h1>Abstract Paintings</h1>
+        <div id="paintings">
+            <div class="card">
+                <img src="painting1.jpg" alt="Painting 1">
+                <h2>Painting 1</h2>
+                <p>$100</p>
+                <button onclick="addToCart('Painting 1', 100)">Add to Cart</button>
+            </div>
+            <div class="card">
+                <img src="painting2.jpg" alt="Painting 2">
+                <h2>Painting 2</h2>
+                <p>$150</p>
+                <button onclick="addToCart('Painting 2', 150)">Add to Cart</button>
+            </div>
+            <!-- Add more paintings as needed -->
+        </div>
+    </div>
+
+    <div class="cart container">
+        <h2>Cart</h2>
+        <ul id="cart-list"></ul>
+    </div>
+
+    <script>
+        const cart = [];
+
+        function addToCart(item, price) {
+            cart.push({ item, price });
+            displayCart();
+        }
+
+        function displayCart() {
+            const cartList = document.getElementById('cart-list');
+            cartList.innerHTML = '';
+            cart.forEach((cartItem, index) => {
+                const li = document.createElement('li');
+                li.textContent = `${cartItem.item} - $${cartItem.price}`;
+                cartList.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>
